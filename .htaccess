@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# /index or /index.html -> redirect to the site root (canonical home URL)
+RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
+RewriteRule ^ /? [R=301,L]
+
+# /page.html -> redirect to the clean /page URL (avoids duplicate URLs)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Internally serve page.html when /page is requested (browser URL stays clean)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^.]+)$ $1.html [NC,L]
+
+DirectoryIndex index.html
