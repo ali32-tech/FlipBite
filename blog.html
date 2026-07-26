@@ -265,7 +265,7 @@
           </a>`;
       }
 
-      fetch('posts/index.json')
+      fetch('posts.php')
         .then((res) => (res.ok ? res.json() : []))
         .then((posts) => {
           const featuredSlot = document.getElementById('featured-slot');
