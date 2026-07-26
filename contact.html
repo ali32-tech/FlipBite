@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | FlipBite</title>
+  <meta name="description"
+    content="Get in touch with FlipBite. Reach out directly via email and we'll respond fast.">
+  <!-- Tailwind v4 CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme { --font-sans: 'Inter', sans-serif; }
+
+      /* Core Animations */
+      .fade-in-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+      .fade-in-down { animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(-20px); }
+      .float-slow { animation: float 6s ease-in-out infinite; }
+      .float-fast { animation: float 4s ease-in-out infinite; }
+      .pulse-glow { animation: pulseGlow 4s ease-in-out infinite alternate; }
+      .ring-pulse { animation: ringPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      .envelope-bob { animation: envelopeBob 3.5s ease-in-out infinite; }
+
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-500 { animation-delay: 500ms; }
+
+      @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeInDown { to { opacity: 1; transform: translateY(0); } }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+      @keyframes pulseGlow { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 0.6; transform: scale(1.1); } }
+      @keyframes ringPulse { 0% { transform: scale(0.9); opacity: 0.6; } 70% { transform: scale(1.6); opacity: 0; } 100% { opacity: 0; } }
+      @keyframes envelopeBob { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
+
+      /* Custom utilities */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(16, 185, 129, 0.15);
+      }
+    </style>
+</head>
+
+<body
+  class="bg-[#fafafa] font-sans antialiased text-[#0f172a] overflow-x-hidden selection:bg-[#10B981] selection:text-white">
+
+  <!-- Navbar -->
+  <div class="flex justify-center w-full fixed top-0 left-0 z-50">
+    <nav
+      class="fade-in-down mt-[28px] w-[86%] max-w-6xl h-[60px] bg-white/90 backdrop-blur-md border border-[#e2e8f0] rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] px-[32px] flex items-center justify-between transition-all duration-300">
+      <div class="flex flex-1 items-center gap-[12px]">
+        <div class="w-[32px] h-[32px] flex items-center justify-center shrink-0">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+            class="w-full h-full drop-shadow-[0_4px_10px_rgba(16,185,129,0.2)]">
+            <path d="M20 4L36 20L20 36L4 20L20 4Z" fill="url(#brandGrad1)" fill-opacity="0.15" stroke="url(#brandGrad1)"
+              stroke-width="3" stroke-linejoin="round" class="animate-pulse" />
+            <path d="M12 20L20 12L28 20" stroke="#10B981" stroke-width="3" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M16 24L20 20L24 24" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <circle cx="20" cy="20" r="2" fill="#10B981" />
+            <defs>
+              <linearGradient id="brandGrad1" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#10B981" />
+                <stop offset="1" stop-color="#3B82F6" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="text-[#0f172a] font-bold text-[18px] tracking-tight whitespace-nowrap">FlipBite</span>
+      </div>
+      <div id="desktop-nav-links" class="hidden md:flex flex-none items-center gap-[40px] relative">
+          <div id="nav-hover-slider" class="absolute -bottom-[4px] left-0 h-[2px] bg-[#10B981] rounded-full pointer-events-none z-10" style="opacity: 0; width: 0;"></div>
+        <a href="index.html"
+          class="nav-top-link text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors duration-300">Home</a>
+        <div class="relative group">
+          <span tabindex="0"
+            class="nav-top-link flex items-center gap-[4px] text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors duration-300 cursor-default select-none">
+            Services
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="group-hover:rotate-180 transition-transform duration-300">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+          <div
+            class="absolute top-full left-1/2 -translate-x-1/2 pt-[16px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+            <div class="bg-white border border-[#e2e8f0] rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-[8px] w-[220px] flex flex-col">
+              <a href="link-building.html"
+                class="px-[16px] py-[10px] rounded-[10px] text-[#0f172a] text-[14px] font-medium hover:bg-[#F8FAFC] transition-colors">Link
+                Building</a>
+              <a href="influencer-marketing.html"
+                class="px-[16px] py-[10px] rounded-[10px] text-[#0f172a] text-[14px] font-medium hover:bg-[#F8FAFC] transition-colors">Influencer
+                Marketing</a>
+            </div>
+          </div>
+        </div>
+        <a href="blog.html"
+          class="nav-top-link text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors duration-300">Blog</a>
+        <a href="contact.html"
+          class="nav-top-link text-[#0f172a] text-[15px] font-bold transition-colors after:bg-[#10B981]">Contact</a>
+      </div>
+      <div class="hidden md:flex flex-1 items-center justify-end">
+        <a href="mailto:adurshali94@gmail.com"
+          class="flex items-center gap-[8px] bg-[#111827] text-white px-[20px] py-[10px] rounded-[14px] font-medium text-[14px] hover:bg-[#1E293B] hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300">
+          Free Audit
+        </a>
+      </div>
+      <!-- Mobile Toggle -->
+      <div class="md:hidden flex flex-1 justify-end">
+        <button id="mobile-menu-btn" class="text-[#0f172a] focus:outline-none">
+          <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M4 6H20M4 12H20M4 18H20" />
+          </svg>
+          <svg id="menu-icon-close" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M6 18L18 6M6 6L18 18" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="absolute top-[100px] w-[86%] max-w-6xl bg-white/95 backdrop-blur-md border border-[#e2e8f0] rounded-[20px] shadow-xl flex flex-col md:hidden overflow-hidden transition-all duration-300 origin-top opacity-0 scale-y-95 invisible">
+      <div class="p-[24px] flex flex-col gap-[20px]">
+        <a href="index.html" class="text-[#4B5563] text-[16px] font-medium hover:text-[#0f172a]">Home</a>
+        <span class="text-[#4B5563] text-[16px] font-medium">Services</span>
+        <div class="pl-[16px] flex flex-col gap-[16px] -mt-[4px]">
+          <a href="link-building.html" class="text-[#94A3B8] text-[14px] font-medium hover:text-[#0f172a]">Link Building</a>
+          <a href="influencer-marketing.html" class="text-[#94A3B8] text-[14px] font-medium hover:text-[#0f172a]">Influencer Marketing</a>
+        </div>
+        <a href="blog.html" class="text-[#4B5563] text-[16px] font-medium hover:text-[#0f172a]">Blog</a>
+        <a href="contact.html" class="text-[#0f172a] text-[16px] font-bold">Contact</a>
+        <a href="mailto:adurshali94@gmail.com"
+          class="text-center bg-[#111827] text-white px-[20px] py-[12px] rounded-[14px] font-medium text-[15px]">Free
+          Audit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO / CONTACT -->
+  <header class="relative pt-[200px] pb-[160px] flex flex-col items-center justify-center min-h-screen overflow-hidden">
+    <!-- Cinematic Lighting -->
+    <div
+      class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-white rounded-full blur-[120px] opacity-100 pointer-events-none">
+    </div>
+    <div
+      class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#A7F3D0] rounded-full blur-[150px] pulse-glow pointer-events-none -z-10">
+    </div>
+
+    <!-- Floating decorative dots -->
+    <div class="absolute top-[22%] left-[12%] w-[10px] h-[10px] rounded-full bg-[#3B82F6]/40 float-slow pointer-events-none"></div>
+    <div class="absolute top-[65%] left-[8%] w-[14px] h-[14px] rounded-full bg-[#10B981]/30 float-fast pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[10%] w-[16px] h-[16px] rounded-full bg-[#10B981]/30 float-fast pointer-events-none"></div>
+    <div class="absolute top-[70%] right-[14%] w-[10px] h-[10px] rounded-full bg-[#3B82F6]/40 float-slow pointer-events-none"></div>
+
+    <div class="z-10 w-full max-w-3xl mx-auto px-4 flex flex-col items-center text-center">
+      <!-- Pill -->
+      <div
+        class="fade-in-up inline-flex items-center gap-[8px] bg-white/60 backdrop-blur-sm border border-[#e2e8f0] px-[16px] py-[8px] rounded-full mb-[40px] shadow-sm">
+        <div class="w-[8px] h-[8px] bg-[#10B981] rounded-full animate-pulse"></div>
+        <span class="text-[#0f172a] text-[12px] font-bold uppercase tracking-[0.15em]">Usually Replies Within 24h</span>
+      </div>
+
+      <!-- Headline -->
+      <h1
+        class="fade-in-up delay-100 text-[48px] md:text-[64px] font-extrabold text-[#0f172a] leading-[1.05] tracking-[-0.03em] mb-[24px]">
+        Let's Start a Conversation.
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="fade-in-up delay-200 text-[#475569] text-[18px] md:text-[20px] leading-[1.6] max-w-[560px] mb-[64px]">
+        No forms, no gatekeeping. Drop us a line directly and a real engineer will get back to you.
+      </p>
+
+      <!-- Email Card -->
+      <div class="fade-in-up delay-300 relative w-full max-w-[560px]">
+        <div class="glass-card rounded-[32px] p-[48px] md:p-[56px] shadow-[0_20px_60px_rgba(15,23,42,0.08)] flex flex-col items-center">
+
+          <!-- Envelope Icon with pulsing ring -->
+          <div class="relative mb-[28px] w-[80px] h-[80px] flex items-center justify-center">
+            <span class="absolute inset-0 rounded-full border-2 border-[#10B981] ring-pulse"></span>
+            <span class="absolute inset-0 rounded-full border-2 border-[#3B82F6] ring-pulse" style="animation-delay: 1.2s;"></span>
+            <div
+              class="envelope-bob relative w-[80px] h-[80px] rounded-full bg-gradient-to-br from-[#10B981] to-[#3B82F6] flex items-center justify-center shadow-[0_10px_30px_rgba(16,185,129,0.35)]">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="3" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+          </div>
+
+          <span class="text-[#475569] text-[13px] font-bold uppercase tracking-[0.15em] mb-[12px]">Email Us Directly</span>
+
+          <a id="contact-email" href="mailto:adurshali94@gmail.com"
+            class="text-[#0f172a] text-[24px] md:text-[28px] font-bold tracking-tight hover:text-[#10B981] transition-colors duration-300 break-all">
+            adurshali94@gmail.com
+          </a>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-[16px] mt-[36px] w-full">
+            <button id="copy-email-btn" type="button"
+              class="relative flex items-center justify-center gap-[8px] bg-[#111827] text-white px-[28px] py-[16px] rounded-[16px] font-medium text-[15px] hover:bg-[#1E293B] hover:-translate-y-[2px] transition-all duration-300 shadow-[0_10px_30px_rgba(15,23,42,0.15)] w-full sm:w-auto">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              Copy Email
+              <span id="copy-toast"
+                class="pointer-events-none absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#111827] text-white text-[12px] font-medium px-[12px] py-[6px] rounded-[10px] opacity-0 scale-90 transition-all duration-300">Copied!</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="fade-in-up delay-500 flex flex-wrap items-center justify-center gap-[32px] mt-[56px]">
+        <div class="flex items-center gap-[8px] text-[#475569] text-[14px] font-medium">
+          <div class="w-[8px] h-[8px] bg-[#10B981] rounded-full animate-pulse"></div>
+          Real engineers, no bots
+        </div>
+        <div class="flex items-center gap-[8px] text-[#475569] text-[14px] font-medium">
+          <div class="w-[8px] h-[8px] bg-[#3B82F6] rounded-full animate-pulse"></div>
+          Response within 24 hours
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#F8FAFC] py-[80px] border-t border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-[48px]">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-[12px] mb-[20px]">
+          <div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+              class="w-full h-full drop-shadow-[0_4px_10px_rgba(16,185,129,0.2)]">
+              <path d="M20 4L36 20L20 36L4 20L20 4Z" fill="url(#brandGrad2)" fill-opacity="0.15"
+                stroke="url(#brandGrad2)" stroke-width="3" stroke-linejoin="round" class="animate-pulse" />
+              <path d="M12 20L20 12L28 20" stroke="#10B981" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M16 24L20 20L24 24" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <circle cx="20" cy="20" r="2" fill="#10B981" />
+              <defs>
+                <linearGradient id="brandGrad2" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10B981" />
+                  <stop offset="1" stop-color="#3B82F6" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="text-[#0f172a] text-[20px] font-bold tracking-tight">FlipBite</h3>
+        </div>
+        <p class="text-[#475569] text-[15px] leading-relaxed max-w-[320px]">High-precision SEO architecture and organic
+          growth engineering for enterprise platforms.</p>
+      </div>
+      <div>
+        <h4 class="text-[#0f172a] font-bold text-[13px] uppercase tracking-[0.1em] mb-[24px]">Capabilities</h4>
+        <ul class="flex flex-col gap-[16px]">
+          <li><a href="link-building.html"
+              class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Link Building</a>
+          </li>
+          <li><a href="influencer-marketing.html"
+              class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Influencer
+              Marketing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#0f172a] font-bold text-[13px] uppercase tracking-[0.1em] mb-[24px]">Connect</h4>
+        <ul class="flex flex-col gap-[16px]">
+          <li><a href="contact.html"
+              class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">System Audit</a>
+          </li>
+          <li><a href="blog.html"
+              class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="max-w-6xl mx-auto px-4 mt-[80px] pt-[32px] border-t border-[#E2E8F0] flex flex-col md:flex-row justify-between items-center gap-[16px]">
+      <div class="text-[#475569] text-[14px] font-medium">
+        &copy; 2026 FlipBite Agency. All structural rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for mobile menu -->
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const isOpen = menu.classList.contains('opacity-100');
+        if (isOpen) {
+          menu.classList.remove('opacity-100', 'scale-y-100', 'visible');
+          menu.classList.add('opacity-0', 'scale-y-95', 'invisible');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        } else {
+          menu.classList.remove('opacity-0', 'scale-y-95', 'invisible');
+          menu.classList.add('opacity-100', 'scale-y-100', 'visible');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+        }
+      });
+    }
+  </script>
+
+  <script>
+    // Smooth Navbar Hover Animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const navContainer = document.getElementById('desktop-nav-links');
+      const slider = document.getElementById('nav-hover-slider');
+
+      if (navContainer && slider) {
+        const navItems = navContainer.querySelectorAll('.nav-top-link');
+
+        let activeItem = Array.from(navItems).find(item => item.classList.contains('text-[#0f172a]') && item.classList.contains('font-bold'));
+
+        function updateSlider(element) {
+          const containerRect = navContainer.getBoundingClientRect();
+          const rect = element.getBoundingClientRect();
+          const left = rect.left - containerRect.left;
+          const width = rect.width;
+          slider.style.left = `${left}px`;
+          slider.style.width = `${width}px`;
+        }
+
+        if (activeItem) {
+          slider.style.transition = 'none';
+          updateSlider(activeItem);
+          slider.style.opacity = '1';
+          setTimeout(() => {
+            slider.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+          }, 50);
+        } else {
+          slider.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+
+        navItems.forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            updateSlider(item);
+            slider.style.opacity = '1';
+          });
+        });
+
+        navContainer.addEventListener('mouseleave', () => {
+          if (activeItem) {
+            updateSlider(activeItem);
+          } else {
+            slider.style.opacity = '0';
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          slider.style.transition = 'none';
+          if (navContainer.matches(':hover')) {
+            // wait for mouseleave
+          } else if (activeItem) {
+            updateSlider(activeItem);
+          }
+          setTimeout(() => {
+            slider.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+          }, 50);
+        });
+      }
+    });
+  </script>
+
+  <!-- Copy email to clipboard -->
+  <script>
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyToast = document.getElementById('copy-toast');
+    const emailAddress = 'adurshali94@gmail.com';
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(emailAddress);
+        } catch (e) {
+          const temp = document.createElement('textarea');
+          temp.value = emailAddress;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        }
+        copyToast.classList.remove('opacity-0', 'scale-90');
+        copyToast.classList.add('opacity-100', 'scale-100');
+        setTimeout(() => {
+          copyToast.classList.remove('opacity-100', 'scale-100');
+          copyToast.classList.add('opacity-0', 'scale-90');
+        }, 1500);
+      });
+    }
+  </script>
+
+</body>
+
+</html>

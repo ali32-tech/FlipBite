@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Article | FlipBite</title>
+    <meta id="page-description" name="description" content="">
+    <!-- Tailwind v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme { --font-sans: 'Inter', sans-serif; }
+      .fade-in-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+      .fade-in-down { animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(-20px); }
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeInDown { to { opacity: 1; transform: translateY(0); } }
+
+      #article-body h2 { font-size: 28px; font-weight: 700; color: #0f172a; margin: 40px 0 16px; letter-spacing: -0.01em; }
+      #article-body h3 { font-size: 22px; font-weight: 700; color: #0f172a; margin: 32px 0 12px; }
+      #article-body p { font-size: 18px; line-height: 1.8; color: #475569; margin-bottom: 20px; }
+      #article-body ul { list-style: disc; padding-left: 24px; margin-bottom: 20px; }
+      #article-body li { font-size: 18px; line-height: 1.8; color: #475569; margin-bottom: 8px; }
+      #article-body strong { color: #0f172a; font-weight: 700; }
+      #article-body a { color: #10B981; text-decoration: underline; }
+    </style>
+</head>
+<body class="bg-[#fafafa] font-sans antialiased text-[#0f172a] selection:bg-[#10B981] selection:text-white relative">
+    <!-- Navbar -->
+    <div class="flex justify-center w-full fixed top-0 left-0 z-50">
+      <nav class="fade-in-down mt-[28px] w-[86%] max-w-6xl h-[60px] bg-white/90 backdrop-blur-md border border-[#e2e8f0] rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] px-[32px] flex items-center justify-between">
+        <div class="flex flex-1 items-center gap-[12px]">
+          <div class="w-[32px] h-[32px] flex items-center justify-center shrink-0">
+             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_4px_10px_rgba(16,185,129,0.2)]">
+               <path d="M20 4L36 20L20 36L4 20L20 4Z" fill="url(#brandGrad1)" fill-opacity="0.15" stroke="url(#brandGrad1)" stroke-width="3" stroke-linejoin="round" class="animate-pulse"/>
+               <path d="M12 20L20 12L28 20" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M16 24L20 20L24 24" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+               <circle cx="20" cy="20" r="2" fill="#10B981"/>
+               <defs>
+                 <linearGradient id="brandGrad1" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                   <stop stop-color="#10B981"/>
+                   <stop offset="1" stop-color="#3B82F6"/>
+                 </linearGradient>
+               </defs>
+             </svg>
+          </div>
+          <span class="text-[#0f172a] font-bold text-[18px] tracking-tight whitespace-nowrap">FlipBite</span>
+        </div>
+        <div id="desktop-nav-links" class="hidden md:flex flex-none items-center gap-[32px] relative">
+          <div id="nav-hover-slider" class="absolute -bottom-[4px] left-0 h-[2px] bg-[#10B981] rounded-full pointer-events-none z-10" style="opacity: 0; width: 0;"></div>
+          <a href="index.html" class="nav-top-link text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors">Home</a>
+          <div class="relative group">
+            <span tabindex="0" class="nav-top-link flex items-center gap-[4px] text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors cursor-default select-none">
+              Services
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-300"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-[16px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+              <div class="bg-white border border-[#e2e8f0] rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-[8px] w-[220px] flex flex-col">
+                <a href="link-building.html" class="px-[16px] py-[10px] rounded-[10px] text-[#0f172a] text-[14px] font-medium hover:bg-[#F8FAFC] transition-colors">Link Building</a>
+                <a href="influencer-marketing.html" class="px-[16px] py-[10px] rounded-[10px] text-[#0f172a] text-[14px] font-medium hover:bg-[#F8FAFC] transition-colors">Influencer Marketing</a>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html" class="nav-top-link text-[#0f172a] text-[15px] font-bold transition-colors after:bg-[#10B981]">Blog</a>
+          <a href="contact.html" class="nav-top-link text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors">Contact</a>
+        </div>
+        <div class="hidden md:flex flex-1 items-center justify-end">
+          <a href="contact.html" class="bg-[#111827] text-white px-[20px] py-[10px] rounded-[14px] font-medium text-[14px] hover:bg-[#1E293B] transition-all duration-300">Free Audit</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- ARTICLE -->
+    <article class="pt-[200px] pb-[160px] max-w-3xl mx-auto px-4">
+      <a href="blog.html" class="fade-in-up inline-flex items-center gap-[8px] text-[#475569] text-[14px] font-medium hover:text-[#0f172a] transition-colors mb-[32px]">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Blog
+      </a>
+
+      <div id="not-found" class="hidden text-center py-[80px]">
+        <h1 class="text-[32px] font-bold text-[#0f172a] mb-[12px]">Article not found</h1>
+        <p class="text-[#475569] text-[16px] mb-[24px]">This post may have been moved or removed.</p>
+        <a href="blog.html" class="inline-flex items-center gap-[8px] bg-[#111827] text-white px-[24px] py-[12px] rounded-[14px] font-medium text-[14px] hover:bg-[#1E293B] transition-all duration-300">Back to Blog</a>
+      </div>
+
+      <div id="article-content">
+        <div class="fade-in-up delay-100 flex items-center gap-[12px] mb-[24px]">
+          <span id="article-category" class="font-bold text-[13px] uppercase tracking-wider px-[12px] py-[6px] rounded-full border"></span>
+          <span id="article-date" class="text-[#475569] text-[14px] font-medium"></span>
+        </div>
+        <h1 id="article-title" class="fade-in-up delay-100 text-[40px] md:text-[56px] font-extrabold text-[#0f172a] leading-[1.1] tracking-tight mb-[32px]"></h1>
+        <div class="fade-in-up delay-200 flex items-center gap-[16px] mb-[56px] pb-[40px] border-b border-[#e2e8f0]">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold text-[16px]" id="article-author-initial"></div>
+          <div>
+            <div id="article-author" class="text-[#0f172a] font-bold text-[15px]"></div>
+            <div id="article-author-role" class="text-[#475569] text-[13px]"></div>
+          </div>
+        </div>
+        <div id="article-body" class="fade-in-up delay-200"></div>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-[#F8FAFC] py-[80px] border-t border-[#e2e8f0]">
+      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-[48px]">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-[12px] mb-[20px]">
+            <div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+               <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_4px_10px_rgba(16,185,129,0.2)]">
+                 <path d="M20 4L36 20L20 36L4 20L20 4Z" fill="url(#brandGrad2)" fill-opacity="0.15" stroke="url(#brandGrad2)" stroke-width="3" stroke-linejoin="round" class="animate-pulse"/>
+                 <path d="M12 20L20 12L28 20" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                 <path d="M16 24L20 20L24 24" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                 <circle cx="20" cy="20" r="2" fill="#10B981"/>
+                 <defs>
+                   <linearGradient id="brandGrad2" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                     <stop stop-color="#10B981"/>
+                     <stop offset="1" stop-color="#3B82F6"/>
+                   </linearGradient>
+                 </defs>
+               </svg>
+            </div>
+            <h3 class="text-[#0f172a] text-[20px] font-bold tracking-tight">FlipBite</h3>
+          </div>
+          <p class="text-[#475569] text-[15px] leading-relaxed max-w-[320px]">High-precision SEO architecture and organic growth engineering for enterprise platforms.</p>
+        </div>
+        <div>
+          <h4 class="text-[#0f172a] font-bold text-[13px] uppercase tracking-[0.1em] mb-[24px]">Capabilities</h4>
+          <ul class="flex flex-col gap-[16px]">
+            <li><a href="link-building.html" class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Link Building</a></li>
+            <li><a href="influencer-marketing.html" class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Influencer Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-[#0f172a] font-bold text-[13px] uppercase tracking-[0.1em] mb-[24px]">Connect</h4>
+          <ul class="flex flex-col gap-[16px]">
+            <li><a href="contact.html" class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">System Audit</a></li>
+            <li><a href="blog.html" class="text-[#475569] hover:text-[#10B981] transition-colors text-[15px] font-medium">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 mt-[80px] pt-[32px] border-t border-[#E2E8F0] flex flex-col md:flex-row justify-between items-center gap-[16px]">
+        <div class="text-[#475569] text-[14px] font-medium">&copy; 2026 FlipBite Agency. All structural rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth Navbar Hover Animation (same as other pages)
+      document.addEventListener('DOMContentLoaded', () => {
+        const navContainer = document.getElementById('desktop-nav-links');
+        const slider = document.getElementById('nav-hover-slider');
+        if (navContainer && slider) {
+          const navItems = navContainer.querySelectorAll('.nav-top-link');
+          let activeItem = Array.from(navItems).find(item => item.classList.contains('text-[#0f172a]') && item.classList.contains('font-bold'));
+          function updateSlider(element) {
+            const containerRect = navContainer.getBoundingClientRect();
+            const rect = element.getBoundingClientRect();
+            slider.style.left = `${rect.left - containerRect.left}px`;
+            slider.style.width = `${rect.width}px`;
+          }
+          if (activeItem) {
+            slider.style.transition = 'none';
+            updateSlider(activeItem);
+            slider.style.opacity = '1';
+            setTimeout(() => { slider.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)'; }, 50);
+          }
+          navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => { updateSlider(item); slider.style.opacity = '1'; });
+          });
+          navContainer.addEventListener('mouseleave', () => {
+            if (activeItem) updateSlider(activeItem); else slider.style.opacity = '0';
+          });
+        }
+      });
+    </script>
+
+    <!-- Load and render the post -->
+    <script>
+      const CATEGORY_STYLES = {
+        Research: { text: 'text-[#10B981]', bg: 'bg-[#F0FDF4]', border: 'border-[#bbf7d0]' },
+        Technical: { text: 'text-[#3B82F6]', bg: 'bg-[#EFF6FF]', border: 'border-[#bfdbfe]' },
+        Authority: { text: 'text-[#8B5CF6]', bg: 'bg-[#F5F3FF]', border: 'border-[#ddd6fe]' },
+        Influencer: { text: 'text-[#F43F5E]', bg: 'bg-[#FFF1F2]', border: 'border-[#fecdd3]' },
+      };
+      const DEFAULT_STYLE = { text: 'text-[#64748B]', bg: 'bg-[#F1F5F9]', border: 'border-[#E2E8F0]' };
+
+      function parseFrontmatter(raw) {
+        const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        if (!match) return { data: {}, body: raw };
+        const data = {};
+        for (const line of match[1].split(/\r?\n/)) {
+          const m = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
+          if (!m) continue;
+          let value = m[2].trim();
+          if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+            value = value.slice(1, -1);
+          }
+          data[m[1]] = value;
+        }
+        return { data, body: raw.slice(match[0].length).trim() };
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d)) return iso;
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      const contentEl = document.getElementById('article-content');
+      const notFoundEl = document.getElementById('not-found');
+
+      if (!slug) {
+        contentEl.classList.add('hidden');
+        notFoundEl.classList.remove('hidden');
+      } else {
+        fetch(`posts/${encodeURIComponent(slug)}.md`)
+          .then((res) => { if (!res.ok) throw new Error('not found'); return res.text(); })
+          .then((raw) => {
+            const { data, body } = parseFrontmatter(raw);
+            const style = CATEGORY_STYLES[data.category] || DEFAULT_STYLE;
+
+            document.getElementById('page-title').textContent = `${data.title || 'Article'} | FlipBite`;
+            document.getElementById('page-description').setAttribute('content', data.excerpt || '');
+
+            const categoryEl = document.getElementById('article-category');
+            categoryEl.textContent = data.category || 'General';
+            categoryEl.className = `font-bold text-[13px] uppercase tracking-wider px-[12px] py-[6px] rounded-full border ${style.text} ${style.bg} ${style.border}`;
+
+            document.getElementById('article-date').textContent = formatDate(data.date);
+            document.getElementById('article-title').textContent = data.title || '';
+            document.getElementById('article-author').textContent = data.author || 'FlipBite Team';
+            document.getElementById('article-author-role').textContent = data.author_role || '';
+            document.getElementById('article-author-initial').textContent = (data.author || '?').charAt(0);
+            document.getElementById('article-body').innerHTML = marked.parse(body);
+          })
+          .catch(() => {
+            contentEl.classList.add('hidden');
+            notFoundEl.classList.remove('hidden');
+          });
+      }
+    </script>
+</body>
+</html>

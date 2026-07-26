@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "posts/images"
+public_folder: "posts/images"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Research", "Technical", "Authority", "Influencer", "General"]
+        default: "General"
+      - { label: "Short Excerpt (shown on the blog list)", name: "excerpt", widget: "text" }
+      - { label: "Author Name", name: "author", widget: "string", default: "FlipBite Team" }
+      - { label: "Author Role", name: "author_role", widget: "string", required: false }
+      - { label: "Feature this post at the top of the blog page", name: "featured", widget: "boolean", default: false }
+      - { label: "Post Content", name: "body", widget: "markdown" }

@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "mathematics-of-semantic-density",
+    "title": "The Mathematics of Semantic Density in 2026",
+    "date": "2026-05-14",
+    "category": "Research",
+    "excerpt": "How large language models are fundamentally changing how we measure and construct entity-based content clusters.",
+    "author": "Alex Mercer",
+    "author_role": "Lead Search Architect",
+    "image": "",
+    "featured": true
+  },
+  {
+    "slug": "migrating-10m-pages",
+    "title": "Migrating 10M Pages: A Technical Post-Mortem",
+    "date": "2026-04-02",
+    "category": "Technical",
+    "excerpt": "Zero traffic loss migration framework for enterprise Next.js applications.",
+    "author": "Alex Mercer",
+    "author_role": "Lead Search Architect",
+    "image": "",
+    "featured": false
+  },
+  {
+    "slug": "pr-and-creator-networks",
+    "title": "The Convergence of PR and Creator Networks",
+    "date": "2026-03-11",
+    "category": "Influencer",
+    "excerpt": "Leveraging YouTube signals for off-page domain dominance.",
+    "author": "Alex Mercer",
+    "author_role": "Lead Search Architect",
+    "image": "",
+    "featured": false
+  }
+]
