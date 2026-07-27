@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__ . '/auth.php';
 
+// Already logged in? Don't show the login form again — go straight in.
+if (!empty($_SESSION['flipbite_admin_logged_in'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
