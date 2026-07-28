@@ -7,6 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (preg_match('/^[a-z0-9-]+$/', $slug)) {
         $file = __DIR__ . '/../posts/' . $slug . '.md';
         if (file_exists($file)) {
+            $raw = file_get_contents($file);
+            if (preg_match('/^---\r?\n(.*?)\r?\n---/s', $raw, $m) && preg_match('/^image:\s*"?([^"\r\n]*)"?\s*$/m', $m[1], $im)) {
+                $image = trim($im[1]);
+                if ($image !== '') {
+                    $imagePath = __DIR__ . '/../' . $image;
+                    if (file_exists($imagePath)) unlink($imagePath);
+                }
+            }
             unlink($file);
         }
     }
