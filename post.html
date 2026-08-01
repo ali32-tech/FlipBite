@@ -71,7 +71,35 @@
         <div class="hidden md:flex flex-1 items-center justify-end">
           <a href="/contact" class="bg-[#111827] text-white px-[20px] py-[10px] rounded-[14px] font-medium text-[14px] hover:bg-[#1E293B] transition-all duration-300">Free Audit</a>
         </div>
+        <!-- Mobile Toggle -->
+        <div class="md:hidden flex flex-1 justify-end">
+          <button id="mobile-menu-btn" class="text-[#0f172a] focus:outline-none">
+            <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6H20M4 12H20M4 18H20" />
+            </svg>
+            <svg id="menu-icon-close" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 18L18 6M6 6L18 18" />
+            </svg>
+          </button>
+        </div>
       </nav>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu"
+        class="absolute top-[100px] w-[86%] max-w-6xl bg-white/95 backdrop-blur-md border border-[#e2e8f0] rounded-[20px] shadow-xl flex flex-col md:hidden overflow-hidden transition-all duration-300 origin-top opacity-0 scale-y-95 invisible">
+        <div class="p-[24px] flex flex-col gap-[20px]">
+          <a href="/" class="text-[#4B5563] text-[16px] font-medium hover:text-[#0f172a]">Home</a>
+          <span class="text-[#4B5563] text-[16px] font-medium">Services</span>
+          <div class="pl-[16px] flex flex-col gap-[16px] -mt-[4px]">
+            <a href="/link-building" class="text-[#94A3B8] text-[14px] font-medium hover:text-[#0f172a]">Link Building</a>
+            <a href="/influencer-marketing" class="text-[#94A3B8] text-[14px] font-medium hover:text-[#0f172a]">Influencer Marketing</a>
+          </div>
+          <a href="/blog" class="text-[#0f172a] text-[16px] font-bold">Blog</a>
+          <a href="/contact" class="text-[#4B5563] text-[16px] font-medium hover:text-[#0f172a]">Contact</a>
+          <a href="/contact"
+            class="text-center bg-[#111827] text-white px-[20px] py-[12px] rounded-[14px] font-medium text-[15px]">Free
+            Audit</a>
+        </div>
+      </div>
     </div>
 
     <!-- ARTICLE -->
@@ -147,6 +175,30 @@
         <div class="text-[#475569] text-[14px] font-medium">&copy; 2026 FlipBite Agency. All structural rights reserved.</div>
       </div>
     </footer>
+
+    <!-- Mobile menu toggle -->
+    <script>
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.contains('opacity-100');
+          if (isOpen) {
+            mobileMenu.classList.remove('opacity-100', 'scale-y-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'scale-y-95', 'invisible');
+            menuIconOpen.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+          } else {
+            mobileMenu.classList.remove('opacity-0', 'scale-y-95', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'scale-y-100', 'visible');
+            menuIconOpen.classList.add('hidden');
+            menuIconClose.classList.remove('hidden');
+          }
+        });
+      }
+    </script>
 
     <script>
       // Smooth Navbar Hover Animation (same as other pages)
