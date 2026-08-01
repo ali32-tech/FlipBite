@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Article | FlipBite</title>
     <meta id="page-description" name="description" content="">
+    <meta name="robots" content="index, follow">
+    <link id="page-canonical" rel="canonical" href="https://flipbite.com/post">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="FlipBite">
+    <meta id="og-url" property="og:url" content="https://flipbite.com/post">
+    <meta id="og-title" property="og:title" content="Article | FlipBite">
+    <meta id="og-description" property="og:description" content="">
+    <meta id="og-image" property="og:image" content="https://flipbite.com/flipbite-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta id="twitter-title" name="twitter:title" content="Article | FlipBite">
+    <meta id="twitter-description" name="twitter:description" content="">
+    <meta id="twitter-image" name="twitter:image" content="https://flipbite.com/flipbite-logo.png">
+
+    <meta name="theme-color" content="#10B981">
     <!-- Tailwind v4 CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,7 +49,7 @@
     <!-- Navbar -->
     <div class="flex justify-center w-full fixed top-0 left-0 z-50">
       <nav class="fade-in-down mt-[28px] w-[86%] max-w-6xl h-[60px] bg-white/90 backdrop-blur-md border border-[#e2e8f0] rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] px-[32px] flex items-center justify-between">
-        <div class="flex flex-1 items-center gap-[12px]">
+        <a href="/" class="flex flex-1 items-center gap-[12px]">
           <div class="w-[32px] h-[32px] flex items-center justify-center shrink-0">
              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_4px_10px_rgba(16,185,129,0.2)]">
                <path d="M20 4L36 20L20 36L4 20L20 4Z" fill="url(#brandGrad1)" fill-opacity="0.15" stroke="url(#brandGrad1)" stroke-width="3" stroke-linejoin="round" class="animate-pulse"/>
@@ -49,7 +65,7 @@
              </svg>
           </div>
           <span class="text-[#0f172a] font-bold text-[18px] tracking-tight whitespace-nowrap">FlipBite</span>
-        </div>
+      </a>
         <div id="desktop-nav-links" class="hidden md:flex flex-none items-center gap-[32px] relative">
           <div id="nav-hover-slider" class="absolute -bottom-[4px] left-0 h-[2px] bg-[#10B981] rounded-full pointer-events-none z-10" style="opacity: 0; width: 0;"></div>
           <a href="/" class="nav-top-link text-[#4B5563] text-[15px] font-medium hover:text-[#0f172a] transition-colors">Home</a>
@@ -279,8 +295,20 @@
             const { data, body } = parseFrontmatter(raw);
             const style = CATEGORY_STYLES[data.category] || DEFAULT_STYLE;
 
-            document.getElementById('page-title').textContent = `${data.title || 'Article'} | FlipBite`;
+            const pageTitle = `${data.title || 'Article'} | FlipBite`;
+            const pageUrl = `https://flipbite.com/post?slug=${encodeURIComponent(slug)}`;
+            const pageImage = data.image ? `https://flipbite.com/${data.image}` : 'https://flipbite.com/flipbite-logo.png';
+
+            document.getElementById('page-title').textContent = pageTitle;
             document.getElementById('page-description').setAttribute('content', data.excerpt || '');
+            document.getElementById('page-canonical').setAttribute('href', pageUrl);
+            document.getElementById('og-url').setAttribute('content', pageUrl);
+            document.getElementById('og-title').setAttribute('content', pageTitle);
+            document.getElementById('og-description').setAttribute('content', data.excerpt || '');
+            document.getElementById('og-image').setAttribute('content', pageImage);
+            document.getElementById('twitter-title').setAttribute('content', pageTitle);
+            document.getElementById('twitter-description').setAttribute('content', data.excerpt || '');
+            document.getElementById('twitter-image').setAttribute('content', pageImage);
 
             const categoryEl = document.getElementById('article-category');
             categoryEl.textContent = data.category || 'General';

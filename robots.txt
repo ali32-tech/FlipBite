@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /flipbite-blog-admin-313/
+
+Sitemap: https://flipbite.com/sitemap.xml
